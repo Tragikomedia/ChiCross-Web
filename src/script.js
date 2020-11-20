@@ -16,7 +16,6 @@ const tileCallback = (tile, id) => {
     if (correctTiles.indexOf(id) !== -1) {
         tile.style.backgroundColor = "black";
         numberOfCorrectlyMarked++;
-        console.log(numberOfCorrectlyMarked);
         if (isVictorious()) {
             body.style.backgroundColor = "green";
         } 
