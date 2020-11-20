@@ -16,6 +16,7 @@
 
 td {
     border: 2px solid black;
+    font-size: 2.5vh;
 }
 
 table {
@@ -38,10 +39,19 @@ table {
     background-color: chocolate;
     width: 5vh;
     height: 15vh;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    vertical-align: bottom;
+    line-height: 5vh;
 }
 
 .horizontal-hint {
     background-color: chocolate;
     width: 15vh;
     height: 5vh;
+    text-align: end;
+}
+
+.vertical-hint-container {
+
 }

@@ -47,7 +47,7 @@ const tileCallback = (tile, id) => {
         }
     }
 
-    if (correctTiles.indexOf(id) !== -1) {
+    if (correctTiles.indexOf(id) !== -1 && markedTiles.indexOf(id) === -1) {
         tile.style.backgroundColor = "black";
         markedTiles.push(id);
         updateHintTiles();
@@ -62,7 +62,7 @@ const colNumber = 10;
 
 const body = document.body;
 const mainContent = createMainContent();
-const board = createBoard(rowNumber, colNumber, tileCallback);
+const board = createBoard(rowNumber, colNumber, correctTiles, tileCallback);
 calculateTileNumbersForHints();
 mainContent.appendChild(board);
 body.appendChild(mainContent);
