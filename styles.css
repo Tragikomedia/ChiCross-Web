@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main-content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.board {
+    margin: auto;
+}
+
+td {
+    border: 2px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.tile {
+    background-color: sandybrown;
+    height: 5vh;
+    width: 5vh;
+}
+
+.corner-box {
+    background-color: rgb(88, 50, 9);
+    width: 15vh;
+    height: 15vh;
+}
+
+.vertical-hint {
+    background-color: chocolate;
+    width: 5vh;
+    height: 15vh;
+}
+
+.horizontal-hint {
+    background-color: chocolate;
+    width: 15vh;
+    height: 5vh;
+}
