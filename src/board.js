@@ -6,23 +6,25 @@ export const createBoard = (rowNumber, colNumber, callback) => {
             box.className = "corner-box";
             return box;
         }
-        const createVerticalHintTile = () => {
+        const createVerticalHintTile = (colNumber) => {
             const hintTile = document.createElement("td");
             hintTile.className = "vertical-hint";
+            hintTile.id = `vertical-hint-${colNumber}`;
             return hintTile;
         }
     
         let row = document.createElement("tr");
         row.appendChild(createCornerBox());
         for (let currCol = 0; currCol < colNumber; currCol++) {
-            row.appendChild(createVerticalHintTile());
+            row.appendChild(createVerticalHintTile(currCol));
         }
         return row;
     }
 
-    const createSideHintTile = () => {
+    const createSideHintTile = (rowNumber) => {
         let hintTile = document.createElement("td");
         hintTile.className = "horizontal-hint";
+        hintTile.id = `horizontal-hint-${rowNumber}`;
         return hintTile;
     }
 
@@ -37,7 +39,7 @@ export const createBoard = (rowNumber, colNumber, callback) => {
     board.appendChild(createUpperHintRow(colNumber));
     for (let currRow = 0; currRow < rowNumber; currRow++) {
         let row = document.createElement("tr");
-        row.appendChild(createSideHintTile())
+        row.appendChild(createSideHintTile(currRow))
         for (let currCol = 0; currCol < colNumber; currCol++) {
             row.appendChild(createTile(currCol * rowNumber + currRow));
         }
