@@ -29,7 +29,7 @@ const calculateTileNumbersForHints = () => {
     calculateHorizontal();
 }
 
-const createMainContent = () => {
+const createMainContentPositioning = () => {
     const mainContent = document.createElement("div");
     mainContent.id = "main-content";
     return mainContent;
@@ -61,13 +61,25 @@ const markCallback = (tile, id) => {
                 body.style.backgroundColor = "green";
             }
         }
+
+        const handleIncorrectTile = (tile, id) => {
+            const handleDefeat = () => {
+                gameSet.removeChild(board);
+            }
+            handleCrossingOut(tile, id);
+            lives--;
+            lifeBar.innerHTML = `Lives: ${lives}`;
+            if (!lives) {
+                handleDefeat();
+            }
+        }
+
         if (crossedOutTiles.indexOf(id) === -1) {
             const isUnmarked = markedTiles.indexOf(id) === -1;
             if (correctTiles.indexOf(id) !== -1 && isUnmarked) {
                 handleCorrectTile();
             } else if (isUnmarked) {
-                console.log(id);
-                handleCrossingOut(tile, id);
+                handleIncorrectTile(tile, id);
             }
         }
 
@@ -83,7 +95,7 @@ const markCallback = (tile, id) => {
 const handleCrossingOut = (tile, id) => {
     const index = crossedOutTiles.indexOf(id);
     if (index === -1) {
-        crossedOutTiles.push(id);          
+        crossedOutTiles.push(id);
         tile.appendChild(document.createTextNode('X'));
     } else {
         crossedOutTiles.splice(index, 1);
@@ -91,7 +103,7 @@ const handleCrossingOut = (tile, id) => {
     }
 }
 
-const crossCallback = (tile, id) => {    
+const crossCallback = (tile, id) => {
     clearTimeout(timer);
     prevent = true;
     if (markedTiles.indexOf(id) === -1) {
@@ -99,12 +111,30 @@ const crossCallback = (tile, id) => {
     }
 }
 
+const createLifeBar = () => {
+    let lifeBar = document.createElement("p");
+    lifeBar.id = 'life-bar';
+    lifeBar.appendChild(document.createTextNode(`Lives: ${lives}`));
+    return lifeBar;
+}
+
+const createGameSet = () => {
+    let gameSet = document.createElement("div");
+    gameSet.id = "game-set";
+    return gameSet;
+}
+
 const rowNumber = 10;
 const colNumber = 10;
+let lives = 5;
 
 const body = document.body;
-const mainContent = createMainContent();
+const mainContentPositioning = createMainContentPositioning();
+const gameSet = createGameSet();
+const lifeBar = createLifeBar();
 const board = createBoard(rowNumber, colNumber, correctTiles, markCallback, crossCallback);
 calculateTileNumbersForHints();
-mainContent.appendChild(board);
-body.appendChild(mainContent);
+gameSet.appendChild(lifeBar);
+gameSet.appendChild(board);
+mainContentPositioning.appendChild(gameSet);
+body.appendChild(mainContentPositioning);
