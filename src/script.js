@@ -80,7 +80,7 @@ const crossCallback = (tile, id) => {
     const handleCrossingOut = () => {
         const index = crossedOutTiles.indexOf(id);
         if (index === -1) {
-            crossedOutTiles.push(id);
+            crossedOutTiles.push(id);          
             tile.appendChild(document.createTextNode('X'));
         } else {
             crossedOutTiles.splice(index, 1);
