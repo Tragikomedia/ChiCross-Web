@@ -62,9 +62,13 @@ const markCallback = (tile, id) => {
             }
         }
         if (crossedOutTiles.indexOf(id) === -1) {
-            if (correctTiles.indexOf(id) !== -1 && markedTiles.indexOf(id) === -1) {
+            const isUnmarked = markedTiles.indexOf(id) === -1;
+            if (correctTiles.indexOf(id) !== -1 && isUnmarked) {
                 handleCorrectTile();
-            } 
+            } else if (isUnmarked) {
+                console.log(id);
+                handleCrossingOut(tile, id);
+            }
         }
 
     }
@@ -76,22 +80,22 @@ const markCallback = (tile, id) => {
     }, delay);
 }
 
-const crossCallback = (tile, id) => {
-    const handleCrossingOut = () => {
-        const index = crossedOutTiles.indexOf(id);
-        if (index === -1) {
-            crossedOutTiles.push(id);          
-            tile.appendChild(document.createTextNode('X'));
-        } else {
-            crossedOutTiles.splice(index, 1);
-            tile.removeChild(tile.childNodes[0]);
-        }
+const handleCrossingOut = (tile, id) => {
+    const index = crossedOutTiles.indexOf(id);
+    if (index === -1) {
+        crossedOutTiles.push(id);          
+        tile.appendChild(document.createTextNode('X'));
+    } else {
+        crossedOutTiles.splice(index, 1);
+        tile.removeChild(tile.childNodes[0]);
     }
-    
+}
+
+const crossCallback = (tile, id) => {    
     clearTimeout(timer);
     prevent = true;
     if (markedTiles.indexOf(id) === -1) {
-        handleCrossingOut();
+        handleCrossingOut(tile, id);
     }
 }
 
