@@ -4,19 +4,24 @@ const correctTiles = [0, 2, 5, 6, 10, 12, 14, 21, 22, 23, 24, 25, 26, 27, 28, 29
 const numberOfCorrectTiles = correctTiles.length;
 
 let markedTiles = [];
+let crossedOutTiles = [];
 
 let correctTilesInEachColumn = [];
 let correctTilesInEachRow = [];
 
+let timer;
+let prevent;
+const delay = 200;
+
 const calculateTileNumbersForHints = () => {
     const calculateVertical = () => {
         for (let currColumn = 0; currColumn < colNumber; currColumn++) {
-            correctTilesInEachColumn.push(correctTiles.filter(tile => Math.floor(tile / rowNumber) === currColumn).length); 
+            correctTilesInEachColumn.push(correctTiles.filter(tile => Math.floor(tile / rowNumber) === currColumn).length);
         }
     }
     const calculateHorizontal = () => {
         for (let currRow = 0; currRow < rowNumber; currRow++) {
-            correctTilesInEachRow.push(correctTiles.filter(tile => tile % rowNumber === currRow).length); 
+            correctTilesInEachRow.push(correctTiles.filter(tile => tile % rowNumber === currRow).length);
         }
     }
 
@@ -30,7 +35,7 @@ const createMainContent = () => {
     return mainContent;
 }
 
-const tileCallback = (tile, id) => {
+const markCallback = (tile, id) => {
     const isVictorious = () => numberOfCorrectTiles === markedTiles.length;
 
     const updateHintTiles = () => {
@@ -39,7 +44,7 @@ const tileCallback = (tile, id) => {
             const verticalHint = board.querySelector(`#vertical-hint-${currColNumber}`);
             verticalHint.style.backgroundColor = "black";
         }
-        
+
         const currRowNumber = id % rowNumber;
         if (markedTiles.filter(tile => tile % rowNumber === currRowNumber).length === correctTilesInEachRow[currRowNumber]) {
             const horizontalHint = board.querySelector(`#horizontal-hint-${currRowNumber}`);
@@ -47,13 +52,46 @@ const tileCallback = (tile, id) => {
         }
     }
 
-    if (correctTiles.indexOf(id) !== -1 && markedTiles.indexOf(id) === -1) {
-        tile.style.backgroundColor = "black";
-        markedTiles.push(id);
-        updateHintTiles();
-        if (isVictorious()) {
-            body.style.backgroundColor = "green";
-        } 
+    const handleTileMarking = () => {
+        const handleCorrectTile = () => {
+            tile.style.backgroundColor = "black";
+            markedTiles.push(id);
+            updateHintTiles();
+            if (isVictorious()) {
+                body.style.backgroundColor = "green";
+            }
+        }
+        if (crossedOutTiles.indexOf(id) === -1) {
+            if (correctTiles.indexOf(id) !== -1 && markedTiles.indexOf(id) === -1) {
+                handleCorrectTile();
+            } 
+        }
+
+    }
+    timer = setTimeout(() => {
+        if (!prevent) {
+            handleTileMarking();
+        }
+        prevent = false;
+    }, delay);
+}
+
+const crossCallback = (tile, id) => {
+    const handleCrossingOut = () => {
+        const index = crossedOutTiles.indexOf(id);
+        if (index === -1) {
+            crossedOutTiles.push(id);
+            tile.appendChild(document.createTextNode('X'));
+        } else {
+            crossedOutTiles.splice(index, 1);
+            tile.removeChild(tile.childNodes[0]);
+        }
+    }
+    
+    clearTimeout(timer);
+    prevent = true;
+    if (markedTiles.indexOf(id) === -1) {
+        handleCrossingOut();
     }
 }
 
@@ -62,7 +100,7 @@ const colNumber = 10;
 
 const body = document.body;
 const mainContent = createMainContent();
-const board = createBoard(rowNumber, colNumber, correctTiles, tileCallback);
+const board = createBoard(rowNumber, colNumber, correctTiles, markCallback, crossCallback);
 calculateTileNumbersForHints();
 mainContent.appendChild(board);
 body.appendChild(mainContent);

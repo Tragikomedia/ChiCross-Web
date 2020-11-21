@@ -27,6 +27,7 @@ table {
     background-color: sandybrown;
     height: 5vh;
     width: 5vh;
+    text-align: center;
 }
 
 .corner-box {

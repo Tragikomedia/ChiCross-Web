@@ -1,4 +1,4 @@
-export const createBoard = (rowNumber, colNumber, correctTiles, callback) => {
+export const createBoard = (rowNumber, colNumber, correctTiles, markCallback, crossCallback) => {
 
     const createUpperHintRow = (colNumber) => {
         const createCornerBox = () => {
@@ -33,7 +33,17 @@ export const createBoard = (rowNumber, colNumber, correctTiles, callback) => {
     const createTile = (id) => {
         const tile = document.createElement("td");
         tile.className = "tile";
-        tile.addEventListener('click', () => callback(tile, id));
+        tile.addEventListener('click', (event) => {
+            console.log(event.button);
+            if (event.button === 0) markCallback(tile, id);
+            else if (event.button === 2) {
+                event.preventDefault();
+                event.stopPropagation();
+                crossCallback(title, id);
+                console.log('RMB');
+            }
+        });
+        tile.addEventListener('dblclick', () => crossCallback(tile, id));
         return tile;
     }
 
