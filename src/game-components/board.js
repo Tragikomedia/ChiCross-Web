@@ -1,6 +1,7 @@
-export const createBoard = (rowNumber, colNumber, correctTiles, markCallback, crossCallback) => {
-
-    const createUpperHintRow = (colNumber) => {
+export const createBoard = game => {
+    let {rowNumber, colNumber, correctTiles, callbacks} = game;
+    let {markCallback, crossCallback} = callbacks;
+    const createUpperHintRow = colNumber => {
         const createCornerBox = () => {
             const box = document.createElement("td");
             box.className = "corner-box";
@@ -40,12 +41,12 @@ export const createBoard = (rowNumber, colNumber, correctTiles, markCallback, cr
         // Catching right-click by 'click' event didn't work
         tile.addEventListener('contextmenu', event => {
             event.preventDefault();
-            crossCallback(tile, id);
+            crossCallback({tile, id});
         });
         tile.addEventListener('click', (event) => {
-            if (event.button === 0) markCallback(tile, id);
+            if (event.button === 0) markCallback({tile, id});
         });
-        tile.addEventListener('dblclick', () => crossCallback(tile, id));
+        tile.addEventListener('dblclick', () => crossCallback({tile, id}));
         return tile;
     }
 
