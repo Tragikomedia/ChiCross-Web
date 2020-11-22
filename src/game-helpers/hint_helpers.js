@@ -19,7 +19,6 @@ export const updateHints = (size, markedTiles, correctInfo) => {
     let { rowNumber } = size;
     let { correctTilesInEachColumn, correctTilesInEachRow } = correctInfo;
     return function (id) {
-
         const updateVertical = () => {
             const currColNumber = Math.floor(id / rowNumber);
             if (markedTiles.filter(tile => Math.floor(tile / rowNumber) === currColNumber).length === correctTilesInEachColumn[currColNumber]) {

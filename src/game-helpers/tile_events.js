@@ -12,7 +12,7 @@ export const markCallback = game => {
             const handleCorrectTile = () => {
                 tile.style.backgroundColor = "black";
                 markedTiles.push(id);
-                game.updateHintTiles()(id);
+                game.hintUpdateHandler(id);
                 game.checkVictoryCondtition();
             }
 

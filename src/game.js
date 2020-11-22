@@ -27,14 +27,13 @@ export class Game {
             markCallback : markCallback(this),
             crossCallback : crossCallback(this)
         };
+
+        this.hintUpdateHandler = updateHints(this.size, this.markedTiles, this.correctInfo);
         
         this.lifeBar = createLifeBar(this.lives);
         this.board = createBoard(this);
         this.gameSet = createGameSet(this.lifeBar, this.board);
     }
-
-    updateHintTiles = () => updateHints(this.size, this.markedTiles, this.correctInfo);
-
 
     deductLife = () => {
         this.lives--;
