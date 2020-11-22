@@ -39,7 +39,7 @@ export const createBoard = game => {
 
     const createTile = (id) => {
         const tile = document.createElement("td");
-        tile.className = "tile";
+        tile.className = "tile non-selectable";
         // Catching right-click by 'click' event didn't work
         tile.addEventListener('contextmenu', event => {
             event.preventDefault();

@@ -11,6 +11,20 @@
     justify-content: center;
 }
 
+#level-list {
+    margin: auto;
+}
+
+.list-tile {
+    width: 20vh;
+    height: 5vh;
+    line-height: 5vh;
+    vertical-align: middle;
+    text-align: center;
+    background-color: coral;
+    border: 3px solid black;
+}
+
 #game-set {
     margin: auto;
 }
@@ -50,4 +64,13 @@ table {
     width: 15vh;
     height: 5vh;
     text-align: end;
+}
+
+.non-selectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
