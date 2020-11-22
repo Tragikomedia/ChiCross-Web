@@ -1,12 +1,11 @@
 let timer;
 let prevent = false;
-const delay = 200;
+const delay = 100;
 
 export const markCallback = game => {
     let { correctInfo, markedTiles, crossedOutTiles } = game;
-    let { correctTiles} = correctInfo;
-    return function (tileInfo) {
-        let { tile, id } = tileInfo;
+    let { correctTiles } = correctInfo;
+    return function ({ tile, id }) {
 
         const handleTileMarking = () => {
             const handleCorrectTile = () => {
@@ -16,7 +15,7 @@ export const markCallback = game => {
                 game.checkVictoryCondtition();
             }
 
-            const handleIncorrectTile = (tile, id) => {
+            const handleIncorrectTile = () => {
                 handleCrossingOut(tile, id, crossedOutTiles);
                 game.deductLife();
                 game.checkDefeatCondition();
@@ -27,7 +26,7 @@ export const markCallback = game => {
                 if (correctTiles.indexOf(id) !== -1 && isUnmarked) {
                     handleCorrectTile();
                 } else if (isUnmarked) {
-                    handleIncorrectTile(tile, id);
+                    handleIncorrectTile();
                 }
             }
 
