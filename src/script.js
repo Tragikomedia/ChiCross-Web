@@ -16,6 +16,5 @@ const body = document.body;
 const mainContentPositioning = createMainContentPositioning();
 let game = new Game(rowNumber, colNumber, correctTiles, lives);
 let gameSet = game.gameSet;
-console.log(game.lifeBar);
 mainContentPositioning.appendChild(gameSet);
 body.appendChild(mainContentPositioning);
