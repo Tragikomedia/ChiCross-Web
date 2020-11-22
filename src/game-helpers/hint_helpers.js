@@ -15,6 +15,23 @@ export const calculateHorizontalHints = (size, correctTiles) => {
     return correctTilesInEachRow;
 }
 
+export const getHintText = (applicableCorrectTiles, difference) => {
+    let count = 0;
+    let previous;
+    let hintText = [];
+    for (const currTile of applicableCorrectTiles) {
+        if (currTile === previous + difference) {
+            count++
+        } else {
+            if (count) hintText.push(count.toString());
+            count = 1;
+        }
+        previous = currTile;
+    }
+    if ((hintText && count) || hintText.length === 0) hintText.push(count.toString());
+    return hintText;
+}
+
 export const updateHints = (size, markedTiles, correctInfo) => {
     let { rowNumber } = size;
     let { correctTilesInEachColumn, correctTilesInEachRow } = correctInfo;

@@ -1,3 +1,5 @@
+import { getHintText } from '../game-helpers/hint_helpers.js';
+
 export const createBoard = game => {
     let { size, correctInfo, callbacks } = game;
     let { rowNumber, colNumber } = size;
@@ -53,23 +55,6 @@ export const createBoard = game => {
     }
 
     const createHintText = (orientation, positionNumber) => {
-        const getProperHints = (applicableCorrectTiles, difference) => {
-            let count = 0;
-            let previous;
-            let hintText = [];
-            for (const currTile of applicableCorrectTiles) {
-                if (currTile === previous + difference) {
-                    count++
-                } else {
-                    if (count) hintText.push(count.toString());
-                    count = 1;
-                }
-                previous = currTile;
-            }
-            if ((hintText && count) || !hintText) hintText.push(count.toString());
-            return hintText;
-        }
-
         let applicableCorrectTiles, difference;
         switch (orientation) {
             case 'vertical':
@@ -82,7 +67,7 @@ export const createBoard = game => {
                 difference = rowNumber;
                 break;
         }
-        return getProperHints(applicableCorrectTiles, difference);
+        return getHintText(applicableCorrectTiles, difference);
     }
 
     const board = document.createElement("table");

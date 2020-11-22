@@ -12,6 +12,13 @@ export const levels = [
         rowNumber: 10,
         colNumber: 10,
         correctTiles: [4, 5, 11, 14, 16, 17, 18, 19, 21, 22, 24, 26, 31, 32, 33, 34, 36, 40, 41, 44, 45, 46, 47, 48, 49, 50, 51, 54, 56, 58, 61, 62, 63, 64, 66, 69, 71, 72, 74, 76, 77, 78, 79, 81, 84, 94, 95]
+    },
+    {
+        character: 'A',
+        meaning: 'A',
+        rowNumber: 10,
+        colNumber: 10,
+        correctTiles: [12]
     }
 ]
 
