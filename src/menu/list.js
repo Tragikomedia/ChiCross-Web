@@ -1,5 +1,5 @@
-import { Game } from './game.js';
-import { State } from './state/state.js';
+import { Game } from '../game/game.js';
+import { State } from '../state/state.js';
 
 export const createList = levels => {
     const list = document.createElement("ol");
