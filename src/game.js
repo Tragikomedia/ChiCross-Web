@@ -5,7 +5,7 @@ import { calculateVerticalHints, calculateHorizontalHints, updateHints } from '.
 import { markCallback, crossCallback } from './game-helpers/tile_events.js';
 
 export class Game {
-    constructor(rowNumber, colNumber, correctTiles, lives) {
+    constructor({rowNumber, colNumber, correctTiles}, lives) {
         this.lives = lives;
 
         this.size = {
