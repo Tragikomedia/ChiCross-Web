@@ -27,7 +27,17 @@
 
 #game-set {
     margin: auto;
+    position: relative;
 }
+
+#end-screen {
+    margin: auto;
+}
+
+#character {
+    font-size: 50vh;
+}
+
 
 td {
     border: 2px solid black;
@@ -73,4 +83,9 @@ table {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+@keyframes ending-screen-animation {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }

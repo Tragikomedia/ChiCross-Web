@@ -1,11 +1,10 @@
 export class State {
-    constructor(status, content) {
-        this.status = status;
+    constructor(content) {
         this.content = content;
     }
 
-    static change(status, content) {
-        return new State(status, content);
+    static change(content) {
+        return new State(content);
     }
     refresh = () => {
         const mainContent = document.querySelector("#main-content");

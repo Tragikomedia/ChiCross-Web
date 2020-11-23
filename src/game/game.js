@@ -3,9 +3,13 @@ import { createLifeBar } from './game-components/life_bar.js';
 import { createGameSet } from './game-components/game_set.js';
 import { calculateVerticalHints, calculateHorizontalHints, updateHints } from './game-helpers/hint_helpers.js';
 import { markCallback, crossCallback } from './game-helpers/tile_events.js';
+import { runAnimatedTransition } from '../state/helpers.js';
+import { createEndScreen } from './end-screen/end_screen.js';
 
 export class Game {
-    constructor({rowNumber, colNumber, correctTiles}, lives) {
+    constructor(level, lives) {
+        let {rowNumber, colNumber, correctTiles} = level;
+        this.level = level;
         this.lives = lives;
 
         this.size = {
@@ -46,8 +50,8 @@ export class Game {
 
     checkVictoryCondtition = () => {
         if (this.correctInfo['numberOfCorrectTiles'] === this.markedTiles.length) {
-            this.gameSet.removeChild(this.board);
-            this.lifeBar.innerHTML = 'CONGRATULATIONS';
+            let victoryScreen = createEndScreen({level: this.level, result: 'victorious'});
+            runAnimatedTransition(victoryScreen, this.gameSet, 'ending-screen-animation');    
         }
     }
 }

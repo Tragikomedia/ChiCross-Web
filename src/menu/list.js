@@ -16,7 +16,7 @@ const createListTile = level => {
     tile.className = "list-tile non-selectable";
     tile.addEventListener('click', () => {
         let game = new Game(level, 5);
-        let state = State.change('playing', game.gameSet);
+        let state = State.change(game.gameSet);
         state.refresh();
     })
     tile.appendChild(document.createTextNode(level['meaning']));

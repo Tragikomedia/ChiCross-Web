@@ -13,6 +13,6 @@ const mainContentPositioning = createMainContentPositioning();
 body.appendChild(mainContentPositioning);
 
 let list = createList(levels);
-let state = State.change('choosing', list);
+let state = State.change(list);
 state.refresh();
 
