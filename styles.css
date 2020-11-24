@@ -21,15 +21,19 @@ body {
     background: black;
 }
 
-
-#title {
+h1 {
     text-align: center;
     padding-top: 10px;
     font-size: 5vh;
 }
 
+h2 {
+    text-align: center;
+    font-size: 3vh;
+}
+
 #main-content {
-    height: 90vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +41,7 @@ body {
 
 #level-list {
     margin: 10px auto;
-    max-height: 70%;
+    max-height: 70vh;
     padding: 5px 10px;
     overflow-y: auto;
     border-top: 2px solid black;
@@ -128,10 +132,10 @@ footer {
     padding: 10px;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -10%;
 }
 
-@keyframes ending-screen-animation {
+@keyframes fading-animation {
     0% {
         opacity: 0;
     }

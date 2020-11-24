@@ -51,7 +51,7 @@ export class Game {
     checkVictoryCondtition = () => {
         if (this.correctInfo['numberOfCorrectTiles'] === this.markedTiles.length) {
             let victoryScreen = createEndScreen({level: this.level, result: 'victorious'});
-            runAnimatedTransition(victoryScreen, this.gameSet, 'ending-screen-animation');    
+            runAnimatedTransition(victoryScreen, this.gameSet, 'fading-animation');    
         }
     }
 }
