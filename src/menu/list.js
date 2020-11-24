@@ -2,7 +2,7 @@ import { Game } from '../game/game.js';
 import { State } from '../state/state.js';
 
 export const createList = levels => {
-    const list = document.createElement("ol");
+    const list = document.createElement("div");
     list.id = "level-list";
     const listTiles = levels.map(level => createListTile(level));
     listTiles.forEach(listTile => {
@@ -12,7 +12,7 @@ export const createList = levels => {
 }
 
 const createListTile = level => {
-    const tile = document.createElement("li");
+    const tile = document.createElement("div");
     tile.className = "list-tile non-selectable";
     tile.addEventListener('click', () => {
         let game = new Game(level, 5);

@@ -8,9 +8,10 @@ export class State {
     }
     refresh = () => {
         const mainContent = document.querySelector("#main-content");
-        let toBeReplaced = mainContent.firstChild;
-        if (toBeReplaced) mainContent.removeChild(toBeReplaced);
-        console.log(this.content);
-        mainContent.appendChild(this.content);
+        let toBeReplaced = Array.from(mainContent.childNodes);
+        toBeReplaced.forEach(thing => {
+            mainContent.removeChild(thing);
+            });
+            mainContent.appendChild(this.content);
     }
 }
