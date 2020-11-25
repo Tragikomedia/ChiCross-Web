@@ -5,6 +5,7 @@ import { calculateVerticalHints, calculateHorizontalHints, updateHints } from '.
 import { markCallback, crossCallback } from './game-helpers/tile_events.js';
 import { runAnimatedTransition } from '../state/helpers.js';
 import { createEndScreen } from './end-screen/end_screen.js';
+import { createButtonRow, createBackToListButton, createRestartButton } from '../core/buttons/buttons.js';
 
 export class Game {
     constructor(level, lives) {
@@ -34,24 +35,31 @@ export class Game {
 
         this.hintUpdateHandler = updateHints(this.size, this.markedTiles, this.correctInfo);
 
-        this.lifeBar = createLifeBar(this.lives);
-        this.board = createBoard(this);
-        this.gameSet = createGameSet(this.lifeBar, this.board);
+        this.components = {
+            lifeBar: createLifeBar(this.lives),
+            board: createBoard(this),
+            buttons: createButtonRow(createBackToListButton('#game-set'), createRestartButton(level))
+        }
+
+        this.gameSet = createGameSet(this.components);
     }
 
     deductLife = () => {
         this.lives--;
-        this.lifeBar.innerHTML = `Lives: ${this.lives}`;
+        this.components['lifeBar'].innerHTML = `Lives: ${this.lives}`;
     }
 
     checkDefeatCondition = () => {
-        if (!this.lives) this.gameSet.removeChild(this.board);
+        if (!this.lives) {
+            let defeatScreen = createEndScreen({level: this.level, result: 'defeat'});
+            runAnimatedTransition(defeatScreen, 'fading-animation');
+        }
     }
 
     checkVictoryCondtition = () => {
         if (this.correctInfo['numberOfCorrectTiles'] === this.markedTiles.length) {
             let victoryScreen = createEndScreen({level: this.level, result: 'victorious'});
-            runAnimatedTransition(victoryScreen, this.gameSet, 'fading-animation');    
+            runAnimatedTransition(victoryScreen, 'fading-animation');    
         }
     }
 }

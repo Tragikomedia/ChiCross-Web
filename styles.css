@@ -74,6 +74,10 @@ h2 {
     font-size: 50vh;
 }
 
+#defeat {
+    font-size: 15vw;
+}
+
 
 td {
     border: 2px solid black;

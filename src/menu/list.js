@@ -1,5 +1,4 @@
 import { Game } from '../game/game.js';
-import { State } from '../state/state.js';
 import { runAnimatedTransition } from '../state/helpers.js';
 
 export const createList = levels => {
@@ -23,7 +22,7 @@ const createListTile = level => {
     tile.className = "list-tile non-selectable";
     tile.addEventListener('click', () => {
         let game = new Game(level, 5);
-        runAnimatedTransition(game.gameSet, document.querySelector('#list-container'), 'fading-animation');
+        runAnimatedTransition(game.gameSet, 'fading-animation');
     })
     tile.appendChild(document.createTextNode(level['meaning']));
     return tile;

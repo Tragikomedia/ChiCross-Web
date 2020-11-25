@@ -40,18 +40,18 @@ export const updateHints = (size, markedTiles, correctInfo) => {
             const currColNumber = Math.floor(id / rowNumber);
             if (markedTiles.filter(tile => Math.floor(tile / rowNumber) === currColNumber).length === correctTilesInEachColumn[currColNumber]) {
                 const verticalHint = document.body.querySelector(`#vertical-hint-${currColNumber}`);
-                updateHintTile(verticalHint);
+                markAsFinished(verticalHint);
             }
         }
         const updateHorizontal = () => {
             const currRowNumber = id % rowNumber;
             if (markedTiles.filter(tile => tile % rowNumber === currRowNumber).length === correctTilesInEachRow[currRowNumber]) {
                 const horizontalHint = document.body.querySelector(`#horizontal-hint-${currRowNumber}`);
-                updateHintTile(horizontalHint);
+                markAsFinished(horizontalHint);
             }
         }
-        const updateHintTile = tile => {
-            tile.style.backgroundColor = "black";
+        const markAsFinished = tile => {
+            tile.style.color = "white";
         }
 
         updateVertical();

@@ -1,3 +1,5 @@
+import { createBackToListButton } from "../../core/buttons/buttons.js";
+
 export const createEndScreen = levelData => {
     const { result, level } = levelData;
     const { character } = level;
@@ -10,9 +12,10 @@ export const createEndScreen = levelData => {
         charDiv.appendChild(document.createTextNode(character));
     }
     else {
-        charDiv.id = "right-side";
-        charDiv.appendChild(document.createTextNode('0'));
+        charDiv.id = "defeat";
+        charDiv.appendChild(document.createTextNode('DEFEAT'));
     }
     endScreen.appendChild(charDiv);
+    endScreen.appendChild(createBackToListButton(`#${endScreen.id}`));
     return endScreen;
 }
