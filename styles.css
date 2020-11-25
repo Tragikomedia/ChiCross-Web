@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 body {
@@ -25,6 +26,15 @@ h1 {
     text-align: center;
     padding-top: 10px;
     font-size: 5vh;
+}
+
+h1:hover {
+    background: linear-gradient(to left, black 0%, crimson 50%, black 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    text-align: center;
 }
 
 h2 {
@@ -64,6 +74,11 @@ h2 {
     -moz-box-shadow: 10px 10px 16px -13px rgba(0,0,0,0.75);
 }
 
+.list-tile:hover {
+    background: black;
+    color: white;
+}
+
 #game-set {
     margin: auto;
     position: relative;
@@ -92,6 +107,14 @@ h2 {
     font-size: 3vh;
     padding: 10px;
     border-radius: 15px;
+    box-shadow: 10px 10px 16px -13px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 16px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 16px -13px rgba(0,0,0,0.75);
+}
+
+#button-row button:hover {
+    background-color: black;
+    color: white;
 }
 
 td {
@@ -110,10 +133,12 @@ table {
     text-align: center;
 }
 
-.corner-box {
+#corner-box {
     background-color: white;
     width: 15vh;
     height: 15vh;
+    text-align: center;
+    font-size: 10vh;
 }
 
 .vertical-hint {

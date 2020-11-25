@@ -1,7 +1,7 @@
 import { State } from './state.js';
 
 export const runAnimatedTransition = (toShow, animation) => {
-    const duration = 1000;
+    const duration = 500;
     let toRemove = document.querySelector('#main-content').firstChild;
     toRemove.style.animationDirection = 'reverse';
     toRemove.style.animationFillMode = 'forwards';

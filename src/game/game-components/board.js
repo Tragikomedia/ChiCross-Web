@@ -8,7 +8,8 @@ export const createBoard = game => {
     const createUpperHintRow = colNumber => {
         const createCornerBox = () => {
             const box = document.createElement("td");
-            box.className = "corner-box";
+            box.id = "corner-box";
+            box.appendChild(document.createTextNode('福'));
             return box;
         }
         const createVerticalHintTile = (colNumber) => {
