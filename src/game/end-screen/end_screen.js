@@ -3,8 +3,14 @@ import { createBackToListButton, createButtonRow, createRestartButton } from "..
 export const createEndScreen = levelData => {
     const createVictoryDiv = () => {
         const div = document.createElement("div");
-        div.id = "character";
-        div.appendChild(document.createTextNode(character));
+        const meaningDiv = document.createElement("div");
+        const char = document.createElement("div");
+        char.id = "character";
+        meaningDiv.id = "meaning";
+        meaningDiv.appendChild(document.createTextNode(meaning));
+        char.appendChild(document.createTextNode(character));
+        div.appendChild(char);
+        div.appendChild(meaningDiv);
         return div;
     }
     const createDefeatDiv = () => {
@@ -14,7 +20,7 @@ export const createEndScreen = levelData => {
         return div;
     }
     const { result, level } = levelData;
-    const { character } = level;
+    const { character, meaning } = level;
 
     const endScreen = document.createElement("div");
     let messageDiv;

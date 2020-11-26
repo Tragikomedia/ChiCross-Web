@@ -85,7 +85,7 @@ export const levels = [
     },
     {
         character: '帝',
-        meaning: 'A',
+        meaning: 'Alladynki',
         rowNumber: 10,
         colNumber: 10,
         correctTiles: [12]
