@@ -177,11 +177,23 @@ footer {
     color: white;
     text-align: center;
     max-height: 10%;
+    min-height: 50px;
     width: 100%;
     padding: 10px;
     position: absolute;
     left: 0;
     bottom: -10%;
+}
+
+@media screen and (max-width: 370px) {
+    footer {
+        font-size: 12px;
+    }
+}
+@media screen and (min-width: 2000px) {
+    footer {
+        font-size: 24px;
+    }
 }
 
 @keyframes fading-animation {
