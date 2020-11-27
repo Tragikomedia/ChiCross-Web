@@ -67,7 +67,7 @@ h2 {
     border-radius: 12px;
     border: 3px solid black;
     margin: 10px;
-    font-size: 4vh;
+    font-size: 3vh;
     padding: 10px;
     box-shadow: 10px 10px 16px -13px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 10px 16px -13px rgba(0,0,0,0.75);
@@ -145,21 +145,22 @@ table {
     font-size: 10vh;
 }
 
+.vertical-hint, .horizontal-hint {
+    background-color: rgb(201, 201, 201);
+    color: black;
+}
+
 .vertical-hint {
-    background-color: rgb(175, 175, 175);
     width: 5vh;
     height: 15vh;
     vertical-align: bottom;
     text-align: center;
-    color: black;
 }
 
 .horizontal-hint {
-    background-color: rgb(175, 175, 175);
     width: 15vh;
     height: 5vh;
     text-align: end;
-    color: black;
     padding-right: 5px;
 }
 
