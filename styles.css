@@ -177,13 +177,11 @@ footer {
     background-color: black;
     color: white;
     text-align: center;
-    max-height: 10%;
-    min-height: 50px;
     width: 100%;
     padding: 10px;
     position: absolute;
+    bottom: -100px;
     left: 0;
-    bottom: -10%;
 }
 
 @media screen and (max-width: 370px) {
