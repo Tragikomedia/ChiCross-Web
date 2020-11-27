@@ -5,7 +5,7 @@ export const createList = levels => {
     const listContainer = document.createElement("div");
     listContainer.id = "list-container";
     const title = document.createElement('h2');
-    title.appendChild(document.createTextNode('Prithee chooseth a leveleth'));
+    title.appendChild(document.createTextNode('Choose level'));
     const list = document.createElement("div");
     list.id = "level-list";
     const listTiles = levels.map(level => createListTile(level));
