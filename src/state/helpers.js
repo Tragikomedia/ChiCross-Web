@@ -20,5 +20,5 @@ export const runAnimatedTransition = (toShow, animation) => {
     setTimeout(() => {
         toShow.style.animationName = '';
         toShow.style.animationDuration = '';
-    }, duration + 1000);
+    }, duration + 500);
 }
