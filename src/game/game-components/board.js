@@ -72,7 +72,7 @@ export const createBoard = game => {
     }
 
     const board = document.createElement("table");
-    board.className = "board";
+    board.id = "board";
     board.appendChild(createUpperHintRow(colNumber));
     for (let currRow = 0; currRow < rowNumber; currRow++) {
         let row = document.createElement("tr");

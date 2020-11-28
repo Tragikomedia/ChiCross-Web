@@ -5,7 +5,7 @@ import { calculateVerticalHints, calculateHorizontalHints, updateHints } from '.
 import { markCallback, crossCallback } from './game-helpers/tile_events.js';
 import { runAnimatedTransition } from '../state/helpers.js';
 import { createEndScreen } from './end-screen/end_screen.js';
-import { createButtonRow, createBackToListButton, createRestartButton } from '../core/buttons/buttons.js';
+import { createButtonRow, createBackToListButton, createRestartButton, createHowToPlayButton } from '../core/buttons/buttons.js';
 
 export class Game {
     constructor(level, lives) {
@@ -38,7 +38,7 @@ export class Game {
         this.components = {
             lifeBar: createLifeBar(this.lives),
             board: createBoard(this),
-            buttons: createButtonRow(createBackToListButton('#game-set'), createRestartButton(level))
+            buttons: createButtonRow(createBackToListButton('#game-set'), createHowToPlayButton(), createRestartButton(level))
         }
 
         this.gameSet = createGameSet(this.components);

@@ -2,6 +2,7 @@ import { runAnimatedTransition } from '../../state/helpers.js';
 import { createList } from '../../menu/list.js';
 import { levels } from '../../levels/levels.js';
 import { Game } from '../../game/game.js';
+import { addTutorial, removeTutorial } from '../../game/game-components/tutorial.js';
 
 export const createButtonRow = (...buttons) => {
     const buttonRow = document.createElement('div');
@@ -9,6 +10,14 @@ export const createButtonRow = (...buttons) => {
     buttons.forEach(button => buttonRow.appendChild(button));
     return buttonRow;
 }
+
+export const createHowToPlayButton = () => createButton('How to play', () => {
+    if (document.querySelector('#tutorial')) {
+        removeTutorial();
+        return;
+    };
+    addTutorial();
+});
 
 export const createBackToListButton = () => createButton('Back to list', () => {
     const list = createList(levels);
