@@ -14,7 +14,7 @@ const tutorialMessages = [
     'Numbers to the top and left serve as hints indicating which tiles should be marked in the given column or row respectively.',
     'A number indicates how many correct tiles there are in a sequence.',
     'E.g. \'2 3 1\' in a vertical hint means that there is 0 or more empty tiles from the top, at least 2 correct tiles in a row, minimum 1 space, 3 correct tiles, at least 1 space, 1 correct tile and then 0 or more empty tiles.',
-    'You can right-click or double-click a tile to cross it out which will prevent you from marking it accidentally.'
+    'You can right-click (long-press on mobile) or double-click a tile to cross it out which will prevent you from marking it accidentally.'
 ];
 
 const createTutorialBox = () => {
