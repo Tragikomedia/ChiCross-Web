@@ -6,3 +6,6 @@ A web browser version of ChiCross app. Original code available on [GitHub](https
 
 * 50 levels of graphical puzzles.
 * Big emphasis on logic (no need to guess whatsoever). 
+
+## Screenshot
+<img src="https://user-images.githubusercontent.com/62154148/100514820-008cdc00-3178-11eb-8226-886676194899.png"/>
