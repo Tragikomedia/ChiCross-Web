@@ -1,0 +1,23 @@
+{
+  "name": "ChiCross-Web",
+  "version": "1.0.0",
+  "description": "App available [here](https://chicross.netlify.app/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tragikomedia/ChiCross-Web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tragikomedia/ChiCross-Web/issues"
+  },
+  "homepage": "https://github.com/Tragikomedia/ChiCross-Web#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
