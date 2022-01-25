@@ -1,6 +1,6 @@
 let timer;
 let prevent = false;
-const delay = 100;
+const delay = 400;
 
 export const markCallback = game => {
     let { correctInfo, markedTiles, crossedOutTiles } = game;
@@ -47,7 +47,6 @@ export const crossCallback = game => {
     return function (tileInfo) {
         let { tile, id } = tileInfo;
         clearTimeout(timer);
-        prevent = true;
         if (markedTiles.indexOf(id) === -1) {
             handleCrossingOut(tile, id, crossedOutTiles);
         }
@@ -63,4 +62,11 @@ export const handleCrossingOut = (tile, id, crossedOutTiles) => {
         crossedOutTiles.splice(index, 1);
         tile.removeChild(tile.childNodes[0]);
     }
+    // Essential for removing the cross via dbclick without triggering click
+    prevent = true;
+    setTimeout(() => {
+        prevent = false;
+    }, delay);
 }
+
+// Note to self - you can also remove dbclick event and check for number of clicks
