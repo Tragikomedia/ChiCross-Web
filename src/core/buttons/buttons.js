@@ -1,6 +1,5 @@
 import { runAnimatedTransition } from '../../state/helpers.js';
-import { createList } from '../../menu/list.js';
-import { levels } from '../../levels/levels.js';
+import { getList } from '../../menu/list.js';
 import { Game } from '../../game/game.js';
 import { addTutorial, removeTutorial } from '../../game/game-components/tutorial.js';
 
@@ -20,7 +19,7 @@ export const createHowToPlayButton = () => createButton('How to play', () => {
 });
 
 export const createBackToListButton = () => createButton('Back to list', () => {
-    const list = createList(levels);
+    const list = getList();
     runAnimatedTransition(list, 'fading-animation');
 });
 
