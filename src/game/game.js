@@ -6,6 +6,7 @@ import { markCallback, crossCallback } from './game-helpers/tile_events.js';
 import { runAnimatedTransition } from '../state/helpers.js';
 import { createEndScreen } from './end-screen/end_screen.js';
 import { createButtonRow, createBackToListButton, createRestartButton, createHowToPlayButton } from '../core/buttons/buttons.js';
+import saveSystem from '../save/saveSystem.js';
 
 export class Game {
     constructor(level, lives) {
@@ -58,6 +59,7 @@ export class Game {
 
     checkVictoryCondtition = () => {
         if (this.correctInfo['numberOfCorrectTiles'] === this.markedTiles.length) {
+            saveSystem.saveVictory(this.level.id);
             let victoryScreen = createEndScreen({level: this.level, result: 'victorious'});
             runAnimatedTransition(victoryScreen, 'fading-animation');    
         }
