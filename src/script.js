@@ -1,7 +1,6 @@
 import { State } from './state/state.js';
-import { createList } from './menu/list.js'; 
-import { levels } from './levels/levels.js';
+import { getList } from './menu/list.js'; 
 
-let list = createList(levels);
+let list = getList();
 let state = State.change(list);
 state.refresh();
