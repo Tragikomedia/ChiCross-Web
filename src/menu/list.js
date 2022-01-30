@@ -27,7 +27,7 @@ const createList = (levels, memory = []) => {
 
 const createListTile = (level, isCompleted) => {
     const tile = document.createElement('div');
-    tile.className = 'list-tile non-selectable';
+    tile.className = `list-tile non-selectable${isCompleted ? ' list-tile-finished' : ''}`;
     tile.addEventListener('click', () => {
         let game = new Game(level, 5);
         runAnimatedTransition(game.gameSet, 'fading-animation');
