@@ -1,12 +1,11 @@
 let timer;
 let prevent = false;
-const delay = 400;
+const delay = 300;
 
 export const markCallback = game => {
     let { correctInfo, markedTiles, crossedOutTiles } = game;
     let { correctTiles } = correctInfo;
     return function ({ tile, id }) {
-
         const handleTileMarking = () => {
             const handleCorrectTile = () => {
                 tile.style.backgroundColor = 'black';
