@@ -82,6 +82,16 @@ h2 {
     color: white;
 }
 
+.list-tile-finished {
+    background: black;
+    color: white;
+}
+
+.list-tile-finished:hover {
+    background: white;
+    color: black;
+}
+
 #game-set {
     margin: auto;
     position: relative;
