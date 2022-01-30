@@ -17,14 +17,14 @@ export class Game {
         this.size = {
             rowNumber: rowNumber,
             colNumber: colNumber
-        }
+        };
 
         this.correctInfo = {
             correctTiles: correctTiles,
             numberOfCorrectTiles: correctTiles.length,
             correctTilesInEachRow: calculateHorizontalHints(this.size, correctTiles),
             correctTilesInEachColumn: calculateVerticalHints(this.size, correctTiles)
-        }
+        };
 
         this.markedTiles = [];
         this.crossedOutTiles = [];
@@ -40,7 +40,7 @@ export class Game {
             lifeBar: createLifeBar(this.lives),
             board: createBoard(this),
             buttons: createButtonRow(createBackToListButton('#game-set'), createHowToPlayButton(), createRestartButton(level))
-        }
+        };
 
         this.gameSet = createGameSet(this.components);
     }
@@ -48,14 +48,14 @@ export class Game {
     deductLife = () => {
         this.lives--;
         this.components['lifeBar'].innerHTML = `Lives: ${this.lives}`;
-    }
+    };
 
     checkDefeatCondition = () => {
         if (!this.lives) {
             let defeatScreen = createEndScreen({level: this.level, result: 'defeat'});
             runAnimatedTransition(defeatScreen, 'fading-animation');
         }
-    }
+    };
 
     checkVictoryCondtition = () => {
         if (this.correctInfo['numberOfCorrectTiles'] === this.markedTiles.length) {
@@ -63,5 +63,5 @@ export class Game {
             let victoryScreen = createEndScreen({level: this.level, result: 'victorious'});
             runAnimatedTransition(victoryScreen, 'fading-animation');    
         }
-    }
+    };
 }

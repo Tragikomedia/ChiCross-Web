@@ -1,4 +1,4 @@
-import { calculateVerticalHints, calculateHorizontalHints, getHintText } from "../../../src/game/game-helpers/hint_helpers";
+import { calculateVerticalHints, calculateHorizontalHints, getHintText } from '../../../src/game/game-helpers/hint_helpers';
 
 describe('Vertical Tiles', () => {
     let size = {rowNumber: 10, colNumber: 10};
@@ -33,7 +33,7 @@ describe('Horizontal Tiles', () => {
         const results = calculateHorizontalHints(size, correctTiles);
         expect(results.length).toBe(10);
         expect(results[0]).toBe(7);
-        expect(results[4]).toBe(4)
+        expect(results[4]).toBe(4);
         expect(results[9]).toBe(6);
     });
     test('Test calculations with empty list', () => {
@@ -49,7 +49,7 @@ describe('Horizontal Tiles', () => {
         expect(results[0]).toBe(4);
         expect(results[3]).toBe(3);
         expect(results[4]).toBe(5);
-    })
+    });
 });
 
 describe('Hint Text', () => {
@@ -73,4 +73,4 @@ describe('Hint Text', () => {
         expect(results.length).toBe(1);
         expect(results[0]).toBe('0');
     });
-})
+});

@@ -5,7 +5,7 @@ export const calculateVerticalHints = (size, correctTiles) => {
         correctTilesInEachColumn.push(correctTiles.filter(tile => Math.floor(tile / rowNumber) === currColumn).length);
     }
     return correctTilesInEachColumn;
-}
+};
 export const calculateHorizontalHints = (size, correctTiles) => {
     const { rowNumber } = size;
     let correctTilesInEachRow = [];
@@ -13,7 +13,7 @@ export const calculateHorizontalHints = (size, correctTiles) => {
         correctTilesInEachRow.push(correctTiles.filter(tile => tile % rowNumber === currRow).length);
     }
     return correctTilesInEachRow;
-}
+};
 
 export const getHintText = (applicableCorrectTiles, difference) => {
     let count = 0;
@@ -21,7 +21,7 @@ export const getHintText = (applicableCorrectTiles, difference) => {
     let hintText = [];
     for (const currTile of applicableCorrectTiles) {
         if (currTile === previous + difference) {
-            count++
+            count++;
         } else {
             if (count) hintText.push(count.toString());
             count = 1;
@@ -30,7 +30,7 @@ export const getHintText = (applicableCorrectTiles, difference) => {
     }
     if ((hintText && count) || hintText.length === 0) hintText.push(count.toString());
     return hintText;
-}
+};
 
 export const updateHints = (size, markedTiles, correctInfo) => {
     let { rowNumber } = size;
@@ -42,20 +42,20 @@ export const updateHints = (size, markedTiles, correctInfo) => {
                 const verticalHint = document.body.querySelector(`#vertical-hint-${currColNumber}`);
                 markAsFinished(verticalHint);
             }
-        }
+        };
         const updateHorizontal = () => {
             const currRowNumber = id % rowNumber;
             if (markedTiles.filter(tile => tile % rowNumber === currRowNumber).length === correctTilesInEachRow[currRowNumber]) {
                 const horizontalHint = document.body.querySelector(`#horizontal-hint-${currRowNumber}`);
                 markAsFinished(horizontalHint);
             }
-        }
+        };
         const markAsFinished = tile => {
-            tile.style.color = "white";
-        }
+            tile.style.color = 'white';
+        };
 
         updateVertical();
         updateHorizontal();
-    }
+    };
 
-}
+};

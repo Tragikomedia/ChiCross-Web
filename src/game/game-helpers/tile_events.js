@@ -9,17 +9,17 @@ export const markCallback = game => {
 
         const handleTileMarking = () => {
             const handleCorrectTile = () => {
-                tile.style.backgroundColor = "black";
+                tile.style.backgroundColor = 'black';
                 markedTiles.push(id);
                 game.hintUpdateHandler(id);
                 game.checkVictoryCondtition();
-            }
+            };
 
             const handleIncorrectTile = () => {
                 handleCrossingOut(tile, id, crossedOutTiles);
                 game.deductLife();
                 game.checkDefeatCondition();
-            }
+            };
 
             if (crossedOutTiles.indexOf(id) === -1) {
                 const isUnmarked = markedTiles.indexOf(id) === -1;
@@ -30,7 +30,7 @@ export const markCallback = game => {
                 }
             }
 
-        }
+        };
 
         // This prevents 'dblclick' and 'click' from happening simultaneously
         timer = setTimeout(() => {
@@ -39,8 +39,8 @@ export const markCallback = game => {
             }
             prevent = false;
         }, delay);
-    }
-}
+    };
+};
 
 export const crossCallback = game => {
     let { markedTiles, crossedOutTiles } = game;
@@ -50,8 +50,8 @@ export const crossCallback = game => {
         if (markedTiles.indexOf(id) === -1) {
             handleCrossingOut(tile, id, crossedOutTiles);
         }
-    }
-}
+    };
+};
 
 export const handleCrossingOut = (tile, id, crossedOutTiles) => {
     const index = crossedOutTiles.indexOf(id);
@@ -67,6 +67,6 @@ export const handleCrossingOut = (tile, id, crossedOutTiles) => {
     setTimeout(() => {
         prevent = false;
     }, delay);
-}
+};
 
 // Note to self - you can also remove dbclick event and check for number of clicks

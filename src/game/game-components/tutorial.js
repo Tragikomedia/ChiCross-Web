@@ -2,11 +2,11 @@ export const addTutorial = () => {
     const tutorialBox = createTutorialBox();
     const board = document.querySelector('#board');
     board.insertBefore(tutorialBox, board.firstChild);
-}
+};
 
 export const removeTutorial = () => {
     document.querySelector('#board').removeChild(document.querySelector('#tutorial'));
-}
+};
 
 const tutorialMessages = [
     'The goal of the game is to mark all the correct tiles.',
@@ -18,15 +18,15 @@ const tutorialMessages = [
 ];
 
 const createTutorialBox = () => {
-    const tutorialDiv = document.createElement("div");
-    tutorialDiv.id = "tutorial";
-    const list = document.createElement("ul");
-    list.appendChild(document.createTextNode('How to play'))
+    const tutorialDiv = document.createElement('div');
+    tutorialDiv.id = 'tutorial';
+    const list = document.createElement('ul');
+    list.appendChild(document.createTextNode('How to play'));
     tutorialMessages.forEach(message => {
-        let li = document.createElement("li");
+        let li = document.createElement('li');
         li.appendChild(document.createTextNode(message));
         list.appendChild(li);
     });
     tutorialDiv.appendChild(list);
     return tutorialDiv;
-}
+};

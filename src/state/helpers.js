@@ -15,10 +15,10 @@ export const runAnimatedTransition = (toShow, animation) => {
         let state = State.change(toShow);
         state.refresh();
     },
-        duration);
+    duration);
     // Strip the remaining element from animation with offset to ensure it works
     setTimeout(() => {
         toShow.style.animationName = '';
         toShow.style.animationDuration = '';
     }, duration + 500);
-}
+};

@@ -7,11 +7,11 @@ export class State {
         return new State(content);
     }
     refresh = () => {
-        const mainContent = document.querySelector("#main-content");
+        const mainContent = document.querySelector('#main-content');
         let toBeReplaced = Array.from(mainContent.childNodes);
         toBeReplaced.forEach(thing => {
             mainContent.removeChild(thing);
-            });
-            mainContent.appendChild(this.content);
-    }
+        });
+        mainContent.appendChild(this.content);
+    };
 }

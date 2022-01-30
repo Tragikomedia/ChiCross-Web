@@ -8,13 +8,13 @@ export const createButtonRow = (...buttons) => {
     buttonRow.id = 'button-row';
     buttons.forEach(button => buttonRow.appendChild(button));
     return buttonRow;
-}
+};
 
 export const createHowToPlayButton = () => createButton('How to play', () => {
     if (document.querySelector('#tutorial')) {
         removeTutorial();
         return;
-    };
+    }
     addTutorial();
 });
 
@@ -33,4 +33,4 @@ const createButton = (text, eventHandler) => {
     button.appendChild(document.createTextNode(text));
     button.addEventListener('click', eventHandler);
     return button;
-}
+};
