@@ -52,6 +52,45 @@ h2 {
     justify-content: center;
 }
 
+#spinner-box {
+    display: flex;
+    justify-content: center;
+}
+
+#spinner {
+    height: 200px;
+    width: 200px;
+}
+
+.spinner-proper {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    fill: none;
+    stroke-width: 10px;
+    stroke-linecap: round;
+    stroke: black;
+}
+
+.spinner-animation{
+    stroke-dasharray: 485.2;
+    animation: fill-animation 1s cubic-bezier(1,1,1,1) 0s infinite;
+  }
+  
+  @keyframes fill-animation{
+    0%{
+      stroke-dasharray: 80 485.2;
+      stroke-dashoffset: 0;
+    }
+    50%{
+      stroke-dasharray: 282.6;
+      stroke-dashoffset: 282.6;
+    }
+    100%{
+      stroke-dasharray: 80 485.2;
+      stroke-dashoffset: 565.2;
+    }
+  }
+
 #level-list {
     margin: 10px auto;
     max-height: 70vh;
